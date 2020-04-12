@@ -46,7 +46,7 @@
 
                     <div class="col-2 col-md-2">
                         <div class="nav-logo">
-                            <a href="">
+                            <a href="index.html">
                                 <img src="main.png" id="logo">
                             </a>
                         </div>
@@ -398,10 +398,37 @@
 </body>
 
 <script>
-    const navRwd = document.querySelector('.nav-ul-collapse');
-    if (window.innerWidth <= 992) {
-        navRwd.classList.remove('show');
+
+    //sticky nav
+    const nav = document.querySelector('.nav');
+
+    let topOfNav = nav.offsetTop;
+
+    function fixNav() {
+        console.log(window.scrollY);
+        if (window.scrollY > topOfNav) {
+            // document.body.style.paddingTop = nav.offsetHeight + 'px';
+            document.body.classList.add('fixed-nav');
+        } else {
+            document.body.classList.remove('fixed-nav');
+            document.body.style.paddingTop = 0;
+        }
     }
+
+    window.addEventListener('scroll', fixNav);
+
+    //jumping card
+
+    const tryCard = document.querySelectorAll('.try-card');
+    const tryCardNodes = [...document.querySelectorAll('.try-card')]
+
+    if (window.scrollY >= 200) {
+        tryCardNodes.map(card => {
+            card.classList.add('jumping-card');
+
+        })
+    }
+
 </script>
 
 </html>
