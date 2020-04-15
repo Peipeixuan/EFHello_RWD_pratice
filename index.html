@@ -422,12 +422,22 @@
     const tryCard = document.querySelectorAll('.try-card');
     const tryCardNodes = [...document.querySelectorAll('.try-card')]
 
-    if (window.scrollY >= 200) {
-        tryCardNodes.map(card => {
-            card.classList.add('jumping-card');
+    window.addEventListener('scroll', jumpingCard);
 
-        })
+    function jumpingCard() {
+        if (window.scrollY >= 220) {
+            tryCardNodes[0].classList.add('jumping-card');
+        }
+        if (window.scrollY >= 270) {
+            tryCardNodes[1].classList.add('jumping-card');
+        }
+        if (window.scrollY >= 300) {
+            tryCardNodes[2].classList.add('jumping-card');
+        }
     }
+
+
+
 
 </script>
 
