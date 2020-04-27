@@ -321,15 +321,15 @@
                         <i class="fas fa-angle-left"></i>
                     </div>
                 </div>
-                <div class="col-3 feedback-photo-rwd">
+                <div class="col feedback-photo-rwd">
                     <div class="feedback-photo">
-                        <img src="person5.jpg" alt="null" class="feedback small">
-                        <img src="person1.jpg" alt="null" class="feedback small">
-                        <img src="person2.jpg" alt="null" class="feedback small">
-                        <img src="person3.jpg" alt="null" class="feedback small">
-                        <img src="person4.jpg" alt="null" class="feedback small">
-                        <img src="person5.jpg" alt="null" class="feedback">
-                        <img src="person1.jpg" alt="null" class="feedback">
+                        <img src="person5.jpg" alt="null" class="feedback-face">
+                        <img src="person1.jpg" alt="null" class="feedback-face active ">
+                        <img src="person2.jpg" alt="null" class="feedback-face">
+                        <img src="person3.jpg" alt="null" class="feedback-face">
+                        <img src="person4.jpg" alt="null" class="feedback-face">
+                        <img src="person5.jpg" alt="null" class="feedback-face">
+                        <img src="person1.jpg" alt="null" class="feedback-face">
                     </div>
                 </div>
                 <div class="col-2 feedback-angle">
@@ -435,6 +435,34 @@
             tryCardNodes[2].classList.add('jumping-card');
         }
     }
+
+    //change face
+    const facesDiv = document.querySelector('.feedback-photo');
+    const facesNode = [...document.querySelectorAll('.feedback-face')]
+
+    let state = 0;
+    const xPosition = [-15, -90, -172, -254, -334];
+
+    setTimeout(changeFace, 5000);
+
+    function changeFace() {
+        console.log(state);
+        facesDiv.style.setProperty('transform', `translateX(${xPosition[state]}px)`);
+        facesNode.map(node => {
+            node.classList.remove('active');
+        })
+        facesNode[state + 1].classList.add('active');
+
+        if (state == 4) {
+            state = 0;
+        } else {
+
+            state += 1;
+        }
+        setTimeout(changeFace, 5000);
+    }
+
+
 
 
 
