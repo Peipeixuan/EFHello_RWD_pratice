@@ -447,7 +447,11 @@
     const feeButton = document.querySelectorAll('.fee-button');
     const buttonNode = [...document.querySelectorAll('.fee-button')];
 
-    let state = 0;
+    const feeArrowLeft = document.querySelector('.feedback-left-angle');
+    const feeArrowRight = document.querySelector('.feedback-right-angle');
+
+
+    let state = 0; //the next index to handle
     const xPosition = [-15, -90, -172, -254, -334];
 
     setInterval(changeFace, 5000);
@@ -489,6 +493,22 @@
 
 
     buttonNode.forEach(a => a.addEventListener('click', buttonChangeFace));
+
+    //make arrow can be click
+    feeArrowLeft.addEventListener('click', () => {
+        console.log(state);
+        if (state == 0) {
+            state = 3;
+        } else if (state == 1) {
+            state = 4;
+        } else {
+            state -= 2;
+        }
+        changeFace();
+    });
+    feeArrowRight.addEventListener('click', () => {
+        changeFace();
+    });
 
 
 
