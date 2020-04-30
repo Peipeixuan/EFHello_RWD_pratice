@@ -352,22 +352,26 @@
                 <div class="feedback-button-second">
                     <ul class="feedback-button" role="tablist">
                         <li>
-                            <button role="tab" aria-selected="false" aria-controls="tabpanel-1" id="tab-1">1</button>
+                            <button class="fee-button active" role="tab" aria-selected="false"
+                                aria-controls="tabpanel-1" id="tab-1">1</button>
                         </li>
                         <li>
-                            <button role="tab" aria-selected="true" aria-controls="tabpanel-2" id="tab-2">2</button>
+                            <button class="fee-button" role="tab" aria-selected="true" aria-controls="tabpanel-2"
+                                id="tab-2">2</button>
                         </li>
                         <li>
 
-                            <button role="tab" aria-selected="false" aria-controls="tabpanel-3" id="tab-3"
-                                class="feedback-button-active">3</button>
+                            <button class="fee-button" role="tab" aria-selected="false" aria-controls="tabpanel-3"
+                                id="tab-3" class="feedback-button-active">3</button>
                         </li>
                         <li>
-                            <button role="tab" aria-selected="false" aria-controls="tabpanel-4" id="tab-4">4</button>
+                            <button class="fee-button" role="tab" aria-selected="false" aria-controls="tabpanel-4"
+                                id="tab-4">4</button>
 
                         </li>
                         <li>
-                            <button role="tab" aria-selected="false" aria-controls="tabpanel-5" id="tab-5">5</button>
+                            <button class="fee-button" role="tab" aria-selected="false" aria-controls="tabpanel-5"
+                                id="tab-5">5</button>
                         </li>
                     </ul>
                 </div>
@@ -405,7 +409,7 @@
     let topOfNav = nav.offsetTop;
 
     function fixNav() {
-        console.log(window.scrollY);
+        //console.log(window.scrollY);
         if (window.scrollY > topOfNav) {
             // document.body.style.paddingTop = nav.offsetHeight + 'px';
             document.body.classList.add('fixed-nav');
@@ -440,10 +444,13 @@
     const facesDiv = document.querySelector('.feedback-photo');
     const facesNode = [...document.querySelectorAll('.feedback-face')]
 
+    const feeButton = document.querySelectorAll('.fee-button');
+    const buttonNode = [...document.querySelectorAll('.fee-button')];
+
     let state = 0;
     const xPosition = [-15, -90, -172, -254, -334];
 
-    setTimeout(changeFace, 5000);
+    setInterval(changeFace, 5000);
 
     function changeFace() {
         console.log(state);
@@ -453,14 +460,36 @@
         })
         facesNode[state + 1].classList.add('active');
 
+        buttonNode.map(node => {
+            node.classList.remove('active');
+        })
+
+        buttonNode[state].classList.add('active');
+
         if (state == 4) {
             state = 0;
         } else {
 
             state += 1;
         }
-        setTimeout(changeFace, 5000);
+
     }
+
+    function buttonChangeFace() {
+        buttonNode.map(node => {
+            node.classList.remove('active');
+        })
+
+        this.classList.add('active');
+
+        console.log(this.innerText - 1);
+        state = this.innerText - 1;
+        changeFace();
+    }
+
+
+    buttonNode.forEach(a => a.addEventListener('click', buttonChangeFace));
+
 
 
 

@@ -233,7 +233,7 @@ nav > *{
 
 .try-card.jumping-card{
   transition: 0.5s ease-in;
-  transform: translateY(-20px) ;
+  transform: translateY(-40px) ;
   
 }
 
@@ -329,7 +329,7 @@ ul.feedback-button{
 
 }
 
-ul.feedback-button>li>button{
+.fee-button{
   border-radius: 50%;
   border: transparent;
   text-indent : -999999999999999999999999px; /*字變不見*/
@@ -337,11 +337,13 @@ ul.feedback-button>li>button{
   width:11px;
   outline:none;
   margin: 5px;
+  outline: none;
 
 }
 
-.feedback-button-active{
+.fee-button.active{
   background-color: var(--special-color);
+  outline: none;
 }
 
 .feedback-content{
